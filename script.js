@@ -140,6 +140,7 @@ function finish() {
 
     //CAPTURE AND STORE TO LOCAL DATA
         submitScore.addEventListener("click", function () {
+            
             var nameInput = scoreInput.value;
 
             if (nameInput === "") {
