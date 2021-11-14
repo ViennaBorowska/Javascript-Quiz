@@ -147,10 +147,12 @@ function finish() {
              displayMessage("No input detected. Please enter initials to submit score.");
 
             } else {
-                var finalScore = {
+                var finalScore =
+                    {
                     initials: nameInput,
                     score: timeLeftCount
                 }
+
                 console.log(finalScore);
                 localStorage.setItem("storedScores", JSON.stringify(finalScore));               
                 window.location.replace("./scoreboard.html");
