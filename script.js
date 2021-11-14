@@ -28,14 +28,13 @@ var questionArr = [
 ]
 
 // DECLARE VARIABLES
-var userScore = 0;
 var questIndex = 0;
 
 var timerEl = document.querySelector("#startTimer");
 var timeLeft = document.querySelector("#timer");
 var questionDisplay = document.querySelector("#quizBox");
 var wrapperBox = document.querySelector("#container");
-
+var j = 0;
 var timeLeftCount = 100;
 var timeStop = 0;
 var incorrectPenalty = 10;
@@ -50,6 +49,7 @@ timerEl.addEventListener("click", function () {
 
                 if (timeLeftCount <= 0) {
                     clearInterval(timeStop);
+                    finish();
                 }
     }, 1000);
 }
@@ -78,5 +78,47 @@ function render(questIndex) {
 
 // FUNCTION TO COMPARE CHOICE WITH CORRECT ANSWER
 function checkAnswer(event) {
-    
+
+    var choice = event.target;
+
+    if (choice.matches("li")) {
+        questIndex++
+    } else {
+        timeLeftCount = timeLeftCount - incorrectPenalty;
+    }
+
+        if (questIndex >= questionArr.length) {
+            clearInterval(timeStop);
+            finish()
+            var finishedText = document.createElement("p")
+            finishedText.textContent = "End of Quiz!";
+        } else {
+            render(questIndex);
+        }
+        questionDisplay.appendChild(finishedText);
 }
+
+// FINISHING FUNCTION TO APPEND LAST PAGE
+
+function finish() {
+    questionDisplay.innerHTML = "";
+    timeLeft.innerHTML = "";
+
+    //PAGE TITLE
+    var finishTitle = document.createElement("h1");
+    finishTitle.setAttribute("id", "finishTitle");
+    finishTitle.textContent = "Congratulations! Quiz finished!"
+
+    questionDisplay.appendChild(finishTitle);
+   
+    var userScore = timeLeftCount;
+    var scoreText = document.createElement("p");
+    clearInterval(timeStop);
+    scoreText.textContent = "You scored: " + userScore;
+
+    questionDisplay.appendChild(scoreText);
+};
+
+  // QUIZ STATS
+
+   
