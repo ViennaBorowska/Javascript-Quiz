@@ -100,7 +100,7 @@ ul li {
   padding: 5px;
   margin: 5px;
   color: white;
-  cursor: crosshair;
+  cursor: pointer;
 }
 
 ul li:hover {
