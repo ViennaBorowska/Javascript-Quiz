@@ -34,7 +34,6 @@ var timerEl = document.querySelector("#startTimer");
 var timeLeft = document.querySelector("#timer");
 var questionDisplay = document.querySelector("#quizBox");
 var wrapperBox = document.querySelector("#container");
-var j = 0;
 var timeLeftCount = 100;
 var timeStop = 0;
 var incorrectPenalty = 10;
@@ -161,7 +160,7 @@ function finish() {
                 }
                 
                 var stringScore = JSON.stringify(scoreboard);
-                localStorage.setItem("scoreboard", stringScore);
+                localStorage.getItem("scoreboard");
                 
                 window.location.replace("./scoreboard.html");
             }
