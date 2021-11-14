@@ -151,7 +151,7 @@ function finish() {
                     score: timeLeftCount
                 }
                 console.log(finalScore);
-                localStorage.setItem("storesScores", JSON.stringify(finalScore));               
+                localStorage.setItem("storedScores", JSON.stringify(finalScore));               
                 window.location.replace("./scoreboard.html");
             }
     });

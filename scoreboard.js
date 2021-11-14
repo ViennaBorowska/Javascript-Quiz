@@ -17,9 +17,10 @@ console.log("saved scores " + scoreboard);
 if (scoreboard !== null) {
         for (var i = 0; i < scoreboard.length; i++) {
             var scoreItem = document.createElement("li");
-            scoreItem.textContent = unStringScore.initials + ":" + unStringScore.score
+            scoreItem.textContent = unStringScore.initials + " : " + unStringScore.score
             scoreList.appendChild(scoreItem);
         }
+        scoreList.sort();
 }
 
 //EVENT LISTENER TO GO BACK TO INDEX HTML
