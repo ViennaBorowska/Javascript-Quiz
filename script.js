@@ -1,3 +1,4 @@
+
 // ARRAY OF QUESTIONS
 var questionArr = [
     {
@@ -81,17 +82,16 @@ function checkAnswer(event) {
 
     var choice = event.target;
 
-    if (choice.matches("li")) {
+    if (choice !== "li") {
+        timeLeftCount = timeLeftCount - incorrectPenalty;
         questIndex++
     } else {
-        timeLeftCount = timeLeftCount - incorrectPenalty;
+        questIndex++
     }
 
         if (questIndex >= questionArr.length) {
             clearInterval(timeStop);
             finish()
-            var finishedText = document.createElement("p")
-            finishedText.textContent = "End of Quiz!";
         } else {
             render(questIndex);
         }
@@ -117,8 +117,58 @@ function finish() {
     scoreText.textContent = "You scored: " + userScore;
 
     questionDisplay.appendChild(scoreText);
-};
 
-  // QUIZ STATS
+    //CREATE SCORE INPUT
+    var scorePrompt = document.createElement("p")
+    scorePrompt.setAttribute("type", "text");
+    scorePrompt.textContent = "Enter your initials to submit your score to the scoreboard: ";
+
+    questionDisplay.appendChild(scorePrompt);
+    //INPUT SCORE TO SCOREBOARD
+        var scoreInput = document.createElement("input");
+        scoreInput.setAttribute("type", "text");
+        scoreInput.setAttribute("id", "initials");
+        scoreInput.textContent = "";
+
+        questionDisplay.appendChild(scoreInput);
+
+    //SUBMIT SCORE INPUT
+        submitScore = document.createElement("button");
+        submitScore.setAttribute("type", "submit");
+        submitScore.setAttribute("id", "submit");
+        submitScore.innerHTML = "Submit";
+
+        questionDisplay.appendChild(submitScore);
+
+    //CAPTURE AND STORE TO LOCAL DATA
+        submitScore.addEventListener("click", function () {
+            var nameInput = submitScore.value;
+
+            if (nameInput === null) {
+                displayMessage("No input detected. Please enter initials to submit score.")
+            } else {
+                var finalScore = {
+                    initials: nameInput,
+                    score: userScore
+                }
+                console.log(finalScore);
+                var scoreboard = [];
+                scoreboard = localStorage.getItem("scoreboard");
+                if (scoreboard === null) {
+                    scoreboard = [];
+                } else {
+                    scoreboard = JSON.parse(scoreboard);
+                }
+                scoreboard.push(finalScore);
+                var stringScore = JSON.stringify(scoreboard);
+                localStorage.setItem('scoreboard', stringScore);
+                
+                window.location.replace("./scoreboard.html");
+            }
+    });
+}
+
+
+
 
    
