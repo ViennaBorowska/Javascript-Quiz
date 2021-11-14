@@ -10,8 +10,7 @@ resetScoreboard.addEventListener("click", function () {
 });
 
 // GET LOCAL DATA
-var scoreboard = [];
-scoreboard = localStorage.getItem("scoreboard");
+scoreboard = JSON.parse(localStorage.getItem("storedScores"));
 
 if (scoreboard !== null) {
         for (var i = 0; i < scoreboard.length; i++) {
@@ -22,6 +21,6 @@ if (scoreboard !== null) {
 }
 
 //EVENT LISTENER TO GO BACK TO INDEX HTML
-goBack.on("click", function () {
+goBack.addEventListener("click", function () {
     window.location.replace("./index.html");
 });

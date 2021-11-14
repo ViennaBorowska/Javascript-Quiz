@@ -80,7 +80,7 @@ function checkAnswer(event) {
 
     var choice = event.target;
 
-    if (choice.textContent === questionArr.answer) {
+    if (choice.textContent === questionArr[questIndex].answer) {
         questIndex++
         
     } else {
@@ -140,10 +140,10 @@ function finish() {
 
     //CAPTURE AND STORE TO LOCAL DATA
         submitScore.addEventListener("click", function () {
-            var nameInput = submitScore.value;
+            var nameInput = scoreInput.value;
 
-            if (nameInput === null) {
-                displayMessage("No input detected. Please enter initials to submit score.")
+            if (nameInput === "") {
+             displayMessage("No input detected. Please enter initials to submit score.");
 
             } else {
                 var finalScore = {
@@ -151,17 +151,7 @@ function finish() {
                     score: userScore
                 }
                 console.log(finalScore);
-
-                var scoreboard = [];
-                if (scoreboard === null) {
-                    scoreboard = [];
-                } else {
-                    scoreboard.push(finalScore);
-                }
-                
-                var stringScore = JSON.stringify(scoreboard);
-                localStorage.getItem("scoreboard");
-                
+                localStorage.setItem("storesScores", JSON.stringify(finalScore));               
                 window.location.replace("./scoreboard.html");
             }
     });
