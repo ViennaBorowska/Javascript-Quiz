@@ -81,7 +81,7 @@ function checkAnswer(event) {
 
     var choice = event.target;
 
-    if (choice === questionArr.answer) {
+    if (choice.textContent === questionArr.answer) {
         questIndex++
         
     } else {
@@ -154,13 +154,12 @@ function finish() {
                 console.log(finalScore);
 
                 var scoreboard = [];
-                scoreboard = localStorage.getItem("scoreboard");
                 if (scoreboard === null) {
                     scoreboard = [];
                 } else {
-                    scoreboard = JSON.parse(scoreboard);
+                    scoreboard.push(finalScore);
                 }
-                scoreboard.push(finalScore);
+                
                 var stringScore = JSON.stringify(scoreboard);
                 localStorage.setItem("scoreboard", stringScore);
                 
