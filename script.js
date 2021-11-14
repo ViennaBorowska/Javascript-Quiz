@@ -2,29 +2,29 @@
 // ARRAY OF QUESTIONS
 var questionArr = [
     {
-        title: "Q1",
-        possAns: ["a", "b", "c", "d"],
-        answer: "a"
+        title: "Inside which element do we put the JavaScript?",
+        possAns: ["<script>", "<scripting>", "<js>", "<javascript>"],
+        answer: "<script>"
     }, 
     {
-        title: "Q2",
-        possAns: ["a", "b", "c", "d"],
-        answer: "a"
+        title: "Where is the correct place to insert a JavaScript link?",
+        possAns: ["The <body> section", "The <head> section", "Either the <head> or the <body> section"],
+        answer: "Either the <head> or the <body> section"
     },
     {
-        title: "Q3",
-        possAns: ["a", "b", "c", "d"],
-        answer: "a"
+        title: "An external JavaScript file must contain the <script> tag?",
+        possAns: ["True", "False"],
+        answer: "True"
     },
     {
-        title: "Q4",
-        possAns: ["a", "b", "c", "d"],
-        answer: "a"
+        title: "How would you call a function called 'myFunction'",
+        possAns: ["call function myFunction()", "call myFunction()", "myFunction()", "dial myFunction()"],
+        answer: "myFunction()"
     },
     {
-        title: "Q5",
-        possAns: ["a", "b", "c", "d"],
-        answer: "a"
+        title: "What is the correct syntax of an IF statement?",
+        possAns: ["if i = 5 then", "if (i === 5)", "if i == 5 then", "if i = 5"],
+        answer: "if (i === 5)"
     },    
 ]
 
@@ -82,11 +82,12 @@ function checkAnswer(event) {
 
     var choice = event.target;
 
-    if (choice !== "li") {
-        timeLeftCount = timeLeftCount - incorrectPenalty;
+    if (choice === questionArr.answer) {
         questIndex++
+        
     } else {
-        questIndex++
+       timeLeftCount = timeLeftCount - incorrectPenalty;
+       questIndex++
     }
 
         if (questIndex >= questionArr.length) {
@@ -94,8 +95,7 @@ function checkAnswer(event) {
             finish()
         } else {
             render(questIndex);
-        }
-        questionDisplay.appendChild(finishedText);
+        }      
 }
 
 // FINISHING FUNCTION TO APPEND LAST PAGE
@@ -146,12 +146,14 @@ function finish() {
 
             if (nameInput === null) {
                 displayMessage("No input detected. Please enter initials to submit score.")
+
             } else {
                 var finalScore = {
                     initials: nameInput,
                     score: userScore
                 }
                 console.log(finalScore);
+
                 var scoreboard = [];
                 scoreboard = localStorage.getItem("scoreboard");
                 if (scoreboard === null) {
@@ -161,7 +163,7 @@ function finish() {
                 }
                 scoreboard.push(finalScore);
                 var stringScore = JSON.stringify(scoreboard);
-                localStorage.setItem('scoreboard', stringScore);
+                localStorage.setItem("scoreboard", stringScore);
                 
                 window.location.replace("./scoreboard.html");
             }

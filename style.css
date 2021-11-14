@@ -3,6 +3,8 @@
 * {
   box-sizing: border-box;
   font-size: 16px;
+  list-style: none;
+  text-decoration: none;
 }
 
 body {
@@ -20,7 +22,22 @@ header {
   padding: 10px;
   justify-content: space-between;
   background-color: rgb(59, 3, 59);
-  color: #fff; 
+  color: violet; 
+  text-decoration: none;
+  
+}
+
+.highscores:link, .highscores:visited, .highscores:active {
+    text-decoration: none;
+}
+
+.highscores {
+  text-decoration: none;
+  
+}
+
+.highscores:hover {
+  color: white;
 }
 
 header div {
@@ -28,6 +45,9 @@ header div {
   font-size: 1em;
 }
 
+.timer {
+  text-decoration: none;
+}
 /*EVERYTHING BELOW NAVBAR*/
 main {
   display: flex;
@@ -44,11 +64,21 @@ main {
   flex-direction: column;
 }
 
+.questions {
+  justify-content: center;
+  margin: 10px;
+  align-items: center;
+}
 
 #start {
   font-size: 2em;
   justify-content: center;
   margin: 10px;
+}
+
+button {
+  background-color: rgb(59, 3, 59);
+  color: white;
 }
 
 /*QUIZ STARTED - QUIZ QUESTIONS*/
@@ -57,9 +87,27 @@ main {
   margin-bottom: 10px;
 }
 
-button {
-  background-color: rgb(59, 3, 59);
+ul {
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  background: rgb(59, 3, 59);
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
   color: white;
+}
+
+ul li:hover {
+  opacity: 50%;
+}
+
+ul li:active {
+  background: violet;
 }
 
 

@@ -23,6 +23,6 @@ if (scoreboard !== null) {
 }
 
 //EVENT LISTENER TO GO BACK TO INDEX HTML
-goBack.addEventListener("click", function () {
+goBack.on("click", function () {
     window.location.replace("./index.html");
 });
