@@ -20,7 +20,6 @@ if (scoreboard !== null) {
             scoreItem.textContent = unStringScore.initials + " : " + unStringScore.score
             scoreList.appendChild(scoreItem);
         }
-        scoreList.sort();
 }
 
 //EVENT LISTENER TO GO BACK TO INDEX HTML
