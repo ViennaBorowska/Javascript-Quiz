@@ -148,7 +148,7 @@ function finish() {
             } else {
                 var finalScore = {
                     initials: nameInput,
-                    score: userScore
+                    score: timeLeftCount
                 }
                 console.log(finalScore);
                 localStorage.setItem("storesScores", JSON.stringify(finalScore));               
