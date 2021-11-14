@@ -1,4 +1,3 @@
-
 // ARRAY OF QUESTIONS
 var questionArr = [
     {
@@ -169,6 +168,8 @@ function finish() {
             }
     });
 }
+
+
 
 
 

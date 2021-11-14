@@ -12,7 +12,6 @@ resetScoreboard.addEventListener("click", function () {
 // GET LOCAL DATA
 var scoreboard = [];
 scoreboard = localStorage.getItem("scoreboard");
-scoreboard.JSONparse(scoreboard);
 
 if (scoreboard !== null) {
         for (var i = 0; i < scoreboard.length; i++) {
