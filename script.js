@@ -154,7 +154,12 @@ function finish() {
                 }
 
                 console.log(finalScore);
-                localStorage.setItem("storedScores", JSON.stringify(finalScore));               
+                
+                var scoreArr = []
+                scoreArr.push(finalScore);
+
+                console.log(scoreArr);
+                localStorage.setItem("storedScores", JSON.stringify(scoreArr));               
                 window.location.replace("./scoreboard.html");
             }
     });
