@@ -155,11 +155,7 @@ function finish() {
 
                 console.log(finalScore);
                 
-                var scoreArr = []
-                scoreArr.push(finalScore);
-
-                console.log(scoreArr);
-                localStorage.setItem("storedScores", JSON.stringify(scoreArr));               
+                localStorage.setItem("storedScores", JSON.stringify(finalScore));               
                 window.location.replace("./scoreboard.html");
             }
     });
