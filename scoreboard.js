@@ -10,14 +10,13 @@ resetScoreboard.addEventListener("click", function () {
 });
 
 // GET LOCAL DATA
-var scoreboard = localStorage.getItem("storedScores");
-var unStringScore = JSON.parse(scoreboard);
+var scoreboard = JSON.parse(localStorage.getItem("storedScores"));
 console.log("saved scores " + scoreboard);
 
 if (scoreboard !== null) {
         for (var i = 0; i < scoreboard.length; i++) {
             var scoreItem = document.createElement("li");
-            scoreItem.textContent = unStringScore.initials + " : " + unStringScore.score
+            scoreItem.textContent = scoreboard[i].initials + " : " + scoreboard[i].score
             scoreList.appendChild(scoreItem);
         }
 }

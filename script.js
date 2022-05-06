@@ -139,27 +139,37 @@ function finish() {
         questionDisplay.appendChild(submitScore);
 
     //CAPTURE AND STORE TO LOCAL DATA
-        submitScore.addEventListener("click", function () {
-            
-            var nameInput = scoreInput.value;
+        submitScore.addEventListener("click", function (sub) {
+            sub.preventDefault();
+            var nameInput = scoreInput.value.trim();
 
             if (nameInput === "") {
              displayMessage("No input detected. Please enter initials to submit score.");
 
-            } else {
+            } 
+
+
+                var scores = [] 
+                scores = JSON.parse(localStorage.getItem("storedScores")) || [];
+                
                 var finalScore =
                     {
                     initials: nameInput,
                     score: timeLeftCount
                 }
 
-                console.log(finalScore);
+                scores.push(finalScore);
+
+                console.log(scores);     
                 
-                localStorage.setItem("storedScores", JSON.stringify(finalScore));               
+                setScores(scores)
                 window.location.replace("./scoreboard.html");
-            }
+
     });
 }
+    function setScores(arrObject) {
+        localStorage.setItem("storedScores", JSON.stringify(arrObject)); 
+    }
 
 
 
